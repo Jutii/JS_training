@@ -1,0 +1,141 @@
+<html>
+    
+ 
+    
+<head>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    
+    <title>Math for Dummies!</title>
+    
+    </head>
+    
+<style>
+    
+    body {
+        background-color: rgb(254, 230, 249);
+        font-family: Courier New;
+        }
+    
+    .header {
+        margin-top: 15px;
+        margin-left: 30px;
+        margin-right: 30px;}
+    
+    .wyniki {
+/*        background-image: url(Bez%20nazwy-2.png); */
+        width: 100%;
+        border: solid;
+        border-color: dimgray;
+        box-shadow: 0 0 10px gray; 
+        object-position: center;
+        }
+    
+    table {
+        background-color: white;
+    }
+    
+    .left {
+        padding-left: 20px;
+        
+    }
+    
+    .right {
+        float: right;
+        padding: 20px;
+        text-align: right;
+
+    }
+    
+    input {
+        text-align: center;
+    }
+    
+    .ruby {
+        opacity: 0.7;
+    }
+    
+    
+    </style>
+<body>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <div class="container">
+    <div class="header">
+        <center><img src="dummies.png"></center><br>
+    
+    </div>
+
+    <table class="wyniki">
+    <tr>
+        <td class="left">
+            <input type="number" id="amount"> 
+            <a href="#" onclick="pola()" ><button type="button" class="btn btn-dark">ADD!</button></a>
+            </td>
+            <td id="containers">
+        </td>
+
+        <td class="right">
+            <button type="button" class="btn btn-dark">Addition</button> : <button type="button" class="btn btn-dark" name="plus"> 0 </button><br><br>
+            
+            <button type="button" class="btn btn-dark">Substraction</button> : <button type="button" class="btn btn-dark" name="minus" >  0</button><br><br>
+        </td>
+        </tr>
+        </table>
+        <center><img class="ruby" src="http://www.pngmart.com/files/1/Pink-Diamond-Heart-Transparent-PNG.png" width="270px"></center>  
+        </div>
+    
+    
+    
+    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>   
+    
+    <script type="text/javascript">
+        function pola(){
+            var number = document.getElementById("amount").value;
+            var container = document.getElementById("containers");
+            var limit = 5;
+            
+            if (number>limit)  {
+            alert ("Don't you think that's enough? I can't help you with more than 5 inputs!");
+            }
+            else {
+            while (container.hasChildNodes()) {
+                container.removeChild(container.lastChild);
+            }
+            
+            for (i=0;i<number; i++){      
+                container.appendChild(document.createTextNode("Value " + (i+1)));
+                var input = document.createElement("input");
+                input.type = "text";
+                input.name = "count";
+                container.appendChild(input);
+                container.appendChild(document.createElement("br"));
+            }
+            }
+        }
+
+        
+        $(document).click(function(e){
+        $("input").change(function(){
+            var sum=0;
+            $("input[name=count]").each(function(){
+                sum = sum + parseInt($(this).val());
+                })
+            $("button[name=plus]").text(sum);       
+        });
+    });
+        
+
+        $(document).click(function(e){
+        $("input").change(function(){
+            var sum=0;
+            $("input[name=count]").each(function(){
+                sum = sum - parseInt($(this).val());
+                })
+            $("button[name=minus]").text(sum);       
+        });
+    });
+       
+    </script>
+</body>
+</html>
